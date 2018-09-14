@@ -8,7 +8,7 @@
 
 class MemoryManager {
 private:
-    unsigned int levelTwoCache
+    unsigned int levelTwoCache;
 };
 
 
