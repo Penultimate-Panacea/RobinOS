@@ -5,6 +5,7 @@
 #ifndef ROBINOS_PROCESSOR_HPP
 #define ROBINOS_PROCESSOR_HPP
 
+#include "Process.hpp"
 class Processor {
     /*!
     * Simulates a Processor by importing Processes/Threads and running CodeObjects contained within them
@@ -15,10 +16,9 @@ private:
     unsigned int instructionsPerSecond = 12000000;//Instructions per Second
     unsigned int levelOneCache = 64000; //Size of L1 Cache in bits
     const unsigned int cacheAccessTime = 5; //Access time in nanoseconds
-
     unsigned char dataBusWidth = 32; //Size of data Bus
     unsigned char addrBusWidth = 32; //Size of address Bus
-
+    Process activeProcess;
 public:
     //Constructors:
     Processor(unsigned int clockSpeed, unsigned int instructionsPerSecond, unsigned int levelOneCache,
@@ -51,6 +51,9 @@ public:
 
     const unsigned int getCacheAccessTime() const;
 
+    const Process &getActiveProcess() const;
+
+    void setActiveProcess(const Process &activeProcess);
 };
 
 

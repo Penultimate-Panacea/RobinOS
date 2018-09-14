@@ -54,4 +54,12 @@ Processor::Processor(unsigned int clockSpeed, unsigned int instructionsPerSecond
         : clockSpeed(clockSpeed), instructionsPerSecond(instructionsPerSecond), levelOneCache(levelOneCache),
           cacheAccessTime(cacheAccessTime), dataBusWidth(dataBusWidth), addrBusWidth(addrBusWidth) {}
 
+const Process &Processor::getActiveProcess() const {
+    return activeProcess;
+}
+
+void Processor::setActiveProcess(const Process &activeProcess) {
+    Processor::activeProcess = activeProcess;
+}
+
 Processor::~Processor() = default;
