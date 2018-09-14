@@ -18,18 +18,24 @@ private:
     unsigned int instructionsPerSecond = 12000000;//Instructions per Second
     unsigned int levelOneCache = 64000; //Size of L1 Cache in bits
     const unsigned int cacheAccessTime = 5; //Access time in nanoseconds
-    CodeObject;
+    std::stack<CodeObject> codeObjectList;
     unsigned char dataBusWidth = 32; //Size of data Bus
     unsigned char addrBusWidth = 32; //Size of Address Bus
 
 public:
     //Constructors:
     Processor(unsigned int clockSpeed, unsigned int instructionsPerSecond, unsigned int levelOneCache,
+              const unsigned int cacheAccessTime, const std::stack<CodeObject> &codeObjectList,
               unsigned char dataBusWidth, unsigned char addrBusWidth);
+
     //Destructors
     virtual ~Processor();
 
     //Getters & Setters:
+    const CodeObject &getCodeObjectList() const;
+
+    void setCodeObjectList(const CodeObject &codeObjectList);
+
     unsigned int getClockSpeed() const;
 
     void setClockSpeed(unsigned int clockSpeed);
@@ -51,6 +57,8 @@ public:
     void setAddrBusWidth(unsigned char addrBusWidth);
 
     const unsigned int getCacheAccessTime() const;
+
+    void setCodeObjectList(const std::stack<CodeObject> &codeObjectList);
 };
 
 
