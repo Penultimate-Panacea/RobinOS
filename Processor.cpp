@@ -1,7 +1,7 @@
 //
 // Created by Rian on 9/13/2018.
 //
-#include "CodeObject.hpp"
+
 #include "Processor.hpp"
 
 unsigned int Processor::getClockSpeed() const {
@@ -37,7 +37,6 @@ void Processor::setAddrBusWidth(unsigned char addrBusWidth) {
 }
 
 
-
 unsigned int Processor::getInstructionsPerSecond() const {
     return instructionsPerSecond;
 }
@@ -50,28 +49,9 @@ const unsigned int Processor::getCacheAccessTime() const {
     return cacheAccessTime;
 }
 
-
-
 Processor::Processor(unsigned int clockSpeed, unsigned int instructionsPerSecond, unsigned int levelOneCache,
-                     const unsigned int cacheAccessTime, const std::stack<CodeObject> &codeObjectList,
-                     unsigned char dataBusWidth, unsigned char addrBusWidth) : clockSpeed(clockSpeed),
-                                                                               instructionsPerSecond(
-                                                                                       instructionsPerSecond),
-                                                                               levelOneCache(levelOneCache),
-                                                                               cacheAccessTime(cacheAccessTime),
-                                                                               codeObjectList(codeObjectList),
-                                                                               dataBusWidth(dataBusWidth),
-                                                                               addrBusWidth(addrBusWidth) {}
-
-void Processor::setCodeObjectList(const std::stack<CodeObject> &codeObjectList) {
-    Processor::codeObjectList = codeObjectList;
-}
-
-Processor::Processor(unsigned int clockSpeed, unsigned int instructionsPerSecond, unsigned int levelOneCache,
-                     const unsigned int cacheAccessTime, const CodeObject &codeObjectList, unsigned char dataBusWidth,
-                     unsigned char addrBusWidth) : clockSpeed(clockSpeed), instructionsPerSecond(instructionsPerSecond),
-                                                   levelOneCache(levelOneCache), cacheAccessTime(cacheAccessTime),
-                                                   codeObjectList(codeObjectList), dataBusWidth(dataBusWidth),
-                                                   addrBusWidth(addrBusWidth) {}
+                     const unsigned int cacheAccessTime, unsigned char dataBusWidth, unsigned char addrBusWidth)
+        : clockSpeed(clockSpeed), instructionsPerSecond(instructionsPerSecond), levelOneCache(levelOneCache),
+          cacheAccessTime(cacheAccessTime), dataBusWidth(dataBusWidth), addrBusWidth(addrBusWidth) {}
 
 Processor::~Processor() = default;

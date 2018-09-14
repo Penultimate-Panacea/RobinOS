@@ -5,9 +5,6 @@
 #ifndef ROBINOS_PROCESSOR_HPP
 #define ROBINOS_PROCESSOR_HPP
 
-#include "CodeObject.hpp"
-#include <stack>
-
 class Processor {
     /*!
     * Simulates a Processor by importing Processes/Threads and running CodeObjects contained within them
@@ -18,23 +15,19 @@ private:
     unsigned int instructionsPerSecond = 12000000;//Instructions per Second
     unsigned int levelOneCache = 64000; //Size of L1 Cache in bits
     const unsigned int cacheAccessTime = 5; //Access time in nanoseconds
-    std::stack<CodeObject> codeObjectList;
+
     unsigned char dataBusWidth = 32; //Size of data Bus
-    unsigned char addrBusWidth = 32; //Size of Address Bus
+    unsigned char addrBusWidth = 32; //Size of address Bus
 
 public:
     //Constructors:
     Processor(unsigned int clockSpeed, unsigned int instructionsPerSecond, unsigned int levelOneCache,
-              const unsigned int cacheAccessTime, const std::stack<CodeObject> &codeObjectList,
-              unsigned char dataBusWidth, unsigned char addrBusWidth);
+              const unsigned int cacheAccessTime, unsigned char dataBusWidth, unsigned char addrBusWidth);
 
     //Destructors
     virtual ~Processor();
 
     //Getters & Setters:
-    const CodeObject &getCodeObjectList() const;
-
-    void setCodeObjectList(const CodeObject &codeObjectList);
 
     unsigned int getClockSpeed() const;
 
@@ -58,7 +51,6 @@ public:
 
     const unsigned int getCacheAccessTime() const;
 
-    void setCodeObjectList(const std::stack<CodeObject> &codeObjectList);
 };
 
 
