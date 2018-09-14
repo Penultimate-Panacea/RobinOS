@@ -5,6 +5,8 @@
 #ifndef ROBINOS_PROCESSOR_HPP
 #define ROBINOS_PROCESSOR_HPP
 
+#include "CodeObject.hpp"
+#include <stack>
 
 class Processor {
     /*!
@@ -15,6 +17,8 @@ private:
     unsigned int clockSpeed = 25000000; //Speed of the Clock in Hz
     unsigned int instructionsPerSecond = 12000000;//Instructions per Second
     unsigned int levelOneCache = 64000; //Size of L1 Cache in bits
+    const unsigned int cacheAccessTime = 5; //Access time in nanoseconds
+    CodeObject;
     unsigned char dataBusWidth = 32; //Size of data Bus
     unsigned char addrBusWidth = 32; //Size of Address Bus
 
@@ -45,6 +49,8 @@ public:
     unsigned char getAddrBusWidth() const;
 
     void setAddrBusWidth(unsigned char addrBusWidth);
+
+    const unsigned int getCacheAccessTime() const;
 };
 
 

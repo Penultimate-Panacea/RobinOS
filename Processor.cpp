@@ -54,4 +54,8 @@ Processor::Processor(unsigned int clockSpeed, unsigned int instructionsPerSecond
                                                                                dataBusWidth(dataBusWidth),
                                                                                addrBusWidth(addrBusWidth) {}
 
+const unsigned int Processor::getCacheAccessTime() const {
+    return cacheAccessTime;
+}
+
 Processor::~Processor() = default;
