@@ -12,7 +12,7 @@
 
 class Strand {
 private:
-    unsigned long threadId;
+    unsigned long strandId;
     unsigned char priority;
     unsigned long executionTime;
     unsigned char alertStatus;
@@ -21,9 +21,9 @@ private:
     unsigned char exitStatus;
     std::stack<CodeObject> codeObjectList;
 public:
-    unsigned long getThreadId() const;
+    unsigned long getStrandId() const;
 
-    void setThreadId(unsigned long threadId);
+    void setStrandId(unsigned long strandId);
 
     unsigned char getPriority() const;
 
@@ -47,7 +47,7 @@ public:
 
     void setExitStatus(unsigned char exitStatus);
 
-    Strand(unsigned long threadId, unsigned char priority, unsigned long executionTime, unsigned char alertStatus,
+    Strand(unsigned long strandId, unsigned char priority, unsigned long executionTime, unsigned char alertStatus,
            unsigned int suspensionCount, const unsigned long hostProcessId);
 
     virtual ~Strand();

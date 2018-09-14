@@ -4,12 +4,12 @@
 
 #include "Strand.hpp"
 
-unsigned long Strand::getThreadId() const {
-    return threadId;
+unsigned long Strand::getStrandId() const {
+    return strandId;
 }
 
-void Strand::setThreadId(unsigned long threadId) {
-    Strand::threadId = threadId;
+void Strand::setStrandId(unsigned long strandId) {
+    Strand::strandId = strandId;
 }
 
 unsigned char Strand::getPriority() const {
@@ -56,8 +56,8 @@ void Strand::setExitStatus(unsigned char exitStatus) {
     Strand::exitStatus = exitStatus;
 }
 
-Strand::Strand(unsigned long threadId, unsigned char priority, unsigned long executionTime, unsigned char alertStatus,
-               unsigned int suspensionCount, const unsigned long hostProcessId) : threadId(threadId),
+Strand::Strand(unsigned long strandId, unsigned char priority, unsigned long executionTime, unsigned char alertStatus,
+               unsigned int suspensionCount, const unsigned long hostProcessId) : strandId(strandId),
                                                                                   priority(priority),
                                                                                   executionTime(executionTime),
                                                                                   alertStatus(alertStatus),
