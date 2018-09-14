@@ -4,19 +4,19 @@
 
 #include "Processor.hpp"
 
-long Processor::getClockSpeed() const {
+unsigned int Processor::getClockSpeed() const {
     return clockSpeed;
 }
 
-void Processor::setClockSpeed(long clockSpeed) {
+void Processor::setClockSpeed(unsigned int clockSpeed) {
     Processor::clockSpeed = clockSpeed;
 }
 
-int Processor::getLevelOneCache() const {
+unsigned int Processor::getLevelOneCache() const {
     return levelOneCache;
 }
 
-void Processor::setLevelOneCache(int levelOneCache) {
+void Processor::setLevelOneCache(unsigned int levelOneCache) {
     Processor::levelOneCache = levelOneCache;
 }
 
@@ -36,6 +36,22 @@ void Processor::setAddrBusWidth(unsigned char addrBusWidth) {
     Processor::addrBusWidth = addrBusWidth;
 }
 
-Processor::Processor(long clockSpeed, int levelOneCache, unsigned char dataBusWidth, unsigned char addrBusWidth)
-        : clockSpeed(clockSpeed), levelOneCache(levelOneCache), dataBusWidth(dataBusWidth),
-          addrBusWidth(addrBusWidth) {}
+
+
+unsigned int Processor::getInstructionsPerSecond() const {
+    return instructionsPerSecond;
+}
+
+void Processor::setInstructionsPerSecond(unsigned int instructionsPerSecond) {
+    Processor::instructionsPerSecond = instructionsPerSecond;
+}
+
+Processor::Processor(unsigned int clockSpeed, unsigned int instructionsPerSecond, unsigned int levelOneCache,
+                     unsigned char dataBusWidth, unsigned char addrBusWidth) : clockSpeed(clockSpeed),
+                                                                               instructionsPerSecond(
+                                                                                       instructionsPerSecond),
+                                                                               levelOneCache(levelOneCache),
+                                                                               dataBusWidth(dataBusWidth),
+                                                                               addrBusWidth(addrBusWidth) {}
+
+Processor::~Processor() = default;
