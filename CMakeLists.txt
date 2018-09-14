@@ -3,4 +3,4 @@ project(RobinOS)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(RobinOS main.cpp Processor.cpp Processor.hpp Process.cpp Process.hpp)
+add_executable(RobinOS main.cpp Processor.cpp Processor.hpp Process.cpp Process.hpp CodeObject.cpp CodeObject.hpp)
