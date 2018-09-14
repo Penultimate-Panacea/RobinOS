@@ -7,6 +7,8 @@
 #ifndef ROBINOS_STRAND_HPP
 #define ROBINOS_STRAND_HPP
 
+#include <stack>
+#include "CodeObject.hpp"
 
 class Strand {
 private:
@@ -17,6 +19,7 @@ private:
     unsigned int suspensionCount;
     const unsigned long hostProcessId;
     unsigned char exitStatus;
+    std::stack<CodeObject> codeObjectList;
 public:
     unsigned long getThreadId() const;
 

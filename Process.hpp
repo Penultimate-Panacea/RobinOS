@@ -18,7 +18,7 @@ private:
     string securityStatus;
     unsigned char basePriority;
     unsigned long executionTime;
-    std::stack<CodeObject> codeObjectList;
+    stack<CodeObject> codeObjectList;
     unsigned char statusCode;
 
 public:
