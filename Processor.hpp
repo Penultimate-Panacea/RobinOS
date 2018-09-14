@@ -7,6 +7,9 @@
 
 
 class Processor {
+    /*!
+    * Simulates a Processor by importing Processes/Threads and running CodeObjects contained within them
+    */
 private:
     //Default Values set as Intel 80486SX 1989-09-16
     long clockSpeed = 25000000; //Speed of the Clock in Hz
