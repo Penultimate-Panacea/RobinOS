@@ -12,22 +12,30 @@ void Processor::setClockSpeed(long clockSpeed) {
     Processor::clockSpeed = clockSpeed;
 }
 
-long Processor::getLevelOneCache() const {
+int Processor::getLevelOneCache() const {
     return levelOneCache;
 }
 
-void Processor::setLevelOneCache(long levelOneCache) {
+void Processor::setLevelOneCache(int levelOneCache) {
     Processor::levelOneCache = levelOneCache;
 }
 
-long Processor::getLevelTwoCache() const {
-    return levelTwoCache;
+unsigned char Processor::getDataBusWidth() const {
+    return dataBusWidth;
 }
 
-void Processor::setLevelTwoCache(long levelTwoCache) {
-    Processor::levelTwoCache = levelTwoCache;
+void Processor::setDataBusWidth(unsigned char dataBusWidth) {
+    Processor::dataBusWidth = dataBusWidth;
 }
 
-Processor::Processor(long clockSpeed, long levelOneCache, long levelTwoCache) : clockSpeed(clockSpeed),
-                                                                                levelOneCache(levelOneCache),
-                                                                                levelTwoCache(levelTwoCache) {}
+unsigned char Processor::getAddrBusWidth() const {
+    return addrBusWidth;
+}
+
+void Processor::setAddrBusWidth(unsigned char addrBusWidth) {
+    Processor::addrBusWidth = addrBusWidth;
+}
+
+Processor::Processor(long clockSpeed, int levelOneCache, unsigned char dataBusWidth, unsigned char addrBusWidth)
+        : clockSpeed(clockSpeed), levelOneCache(levelOneCache), dataBusWidth(dataBusWidth),
+          addrBusWidth(addrBusWidth) {}

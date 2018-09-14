@@ -8,23 +8,32 @@
 
 class Processor {
 private:
-    long clockSpeed = 1333000000000; //Speed of the Clock in Hz
-    long levelOneCache = 14; //Size of L1 Cache in bytes
-    long levelTwoCache = 28; //Size of L2 Cache in bytes
+    //Default Values set as Intel 80386DX 1988-04-04
+    long clockSpeed = 25000000; //Speed of the Clock in Hz
+    int levelOneCache = 64000; //Size of L1 Cache in bits
+    unsigned char dataBusWidth = 32; //Size of data Bus
+    unsigned char addrBusWidth = 32; //Size of Address Bus
+
 public:
-    Processor(long clockSpeed, long levelOneCache, long levelTwoCache);
+    //Constructors:
+    Processor(long clockSpeed, int levelOneCache, unsigned char dataBusWidth, unsigned char addrBusWidth);
 
-    long getLevelOneCache() const;
-
-    void setLevelOneCache(long levelOneCache);
-
-    long getLevelTwoCache() const;
-
-    void setLevelTwoCache(long levelTwoCache);
-
+    //Getters & Setters:
     long getClockSpeed() const;
 
     void setClockSpeed(long clockSpeed);
+
+    int getLevelOneCache() const;
+
+    void setLevelOneCache(int levelOneCache);
+
+    unsigned char getDataBusWidth() const;
+
+    void setDataBusWidth(unsigned char dataBusWidth);
+
+    unsigned char getAddrBusWidth() const;
+
+    void setAddrBusWidth(unsigned char addrBusWidth);
 };
 
 
