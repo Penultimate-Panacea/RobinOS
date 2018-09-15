@@ -50,9 +50,9 @@ const unsigned int Processor::getCacheAccessTime() const {
 }
 
 Processor::Processor(unsigned int clockSpeed, unsigned int instructionsPerSecond, unsigned int levelOneCache,
-                     const unsigned int cacheAccessTime, unsigned char dataBusWidth, unsigned char addrBusWidth)
+        unsigned char dataBusWidth, unsigned char addrBusWidth)
         : clockSpeed(clockSpeed), instructionsPerSecond(instructionsPerSecond), levelOneCache(levelOneCache),
-          cacheAccessTime(cacheAccessTime), dataBusWidth(dataBusWidth), addrBusWidth(addrBusWidth) {}
+        dataBusWidth(dataBusWidth), addrBusWidth(addrBusWidth) {}
 
 const Process &Processor::getActiveProcess() const {
     return activeProcess;

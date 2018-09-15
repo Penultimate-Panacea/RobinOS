@@ -15,14 +15,15 @@ private:
     unsigned int clockSpeed = 25000000; //Speed of the Clock in Hz
     unsigned int instructionsPerSecond = 12000000;//Instructions per Second
     unsigned int levelOneCache = 64000; //Size of L1 Cache in bits
-    const unsigned int cacheAccessTime = 5; //Access time in nanoseconds
+    static const unsigned int cacheAccessTime = 5; //Access time in nanoseconds
+    static const unsigned char priorLevelOneHitRatio = 90; //90 out of 100 times the word will be located in the L1 Cache
     unsigned char dataBusWidth = 32; //Size of data Bus
     unsigned char addrBusWidth = 32; //Size of address Bus
     Process activeProcess;
 public:
     //Constructors:
     Processor(unsigned int clockSpeed, unsigned int instructionsPerSecond, unsigned int levelOneCache,
-              const unsigned int cacheAccessTime, unsigned char dataBusWidth, unsigned char addrBusWidth);
+            unsigned char dataBusWidth, unsigned char addrBusWidth);
 
     //Destructors
     virtual ~Processor();
