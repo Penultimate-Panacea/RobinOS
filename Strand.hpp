@@ -20,6 +20,7 @@ private:
     const unsigned long hostProcessId;
     unsigned char exitStatus;
     std::stack<CodeObject> codeObjectList;
+
 public:
     unsigned long getStrandId() const;
 
@@ -48,7 +49,7 @@ public:
     void setExitStatus(unsigned char exitStatus);
 
     Strand(unsigned long strandId, unsigned char priority, unsigned long executionTime, unsigned char alertStatus,
-           unsigned int suspensionCount, const unsigned long hostProcessId);
+           unsigned int suspensionCount, unsigned long hostProcessId);
 
     virtual ~Strand();
 };

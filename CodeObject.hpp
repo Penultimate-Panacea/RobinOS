@@ -15,6 +15,7 @@ class CodeObject {
 private:
     unsigned int memOps; //Amount of memory needing transfered in bits
     unsigned int procOps; //Amount of CPU operations needed in instructions
+
 public:
     void setMemOps(unsigned int memOps);
     void setProcOps(unsigned int procOps);
