@@ -15,6 +15,27 @@ private:
     static const unsigned char mainMemoryHitRatio = 75;
     static const unsigned char mainMemoryAccessTime = 70; //70 nanoseconds
     unsigned int averageMemoryAccessTime;
+
+public:
+    unsigned int getLevelTwoCache() const;
+
+    void setLevelTwoCache(unsigned int levelTwoCache);
+
+    static const unsigned char getLevelTwoCacheHitRatio();
+
+    static const unsigned char getLevelTwoCacheAccessTime();
+
+    unsigned long getMainMemory() const;
+
+    void setMainMemory(unsigned long mainMemory);
+
+    static const unsigned char getMainMemoryHitRatio();
+
+    static const unsigned char getMainMemoryAccessTime();
+
+    unsigned int getAverageMemoryAccessTime() const;
+
+    void setAverageMemoryAccessTime();
 };
 
 
