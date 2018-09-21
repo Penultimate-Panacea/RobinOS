@@ -68,14 +68,13 @@ int get_data(struct Schedule* sched) //read in data from test.txt
             parse(sched, buffer, n);
             n++;
         }
+        jobs.close();
         return 0;
     }
-    else
-    {
+    else {
         cout << "error:  file not found" << endl;
         return 1;
     }
-    jobs.close();
 }
 
 int find_total(struct Schedule* sched) //calculates total duration of all jobs
