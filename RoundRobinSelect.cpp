@@ -7,10 +7,10 @@ RoundRobin::RoundRobin() {
 
 }
 
-void RoundRobin::calWaitingTime(int processor[], int n, int bt[], int wt[], int quantum) {
-	int rem_bt[n];
+void RoundRobin::calWaitingTime(int processor[], int n, int busTime[], int waitTime[], int quantum) {
+	int rem_busTime[n];
 	for (int i = 0; i < n; i++)
-		rem_bt[i] = bt[i];
+		rem_busTime[i] = busTime[i];
 
 	int t = 0;
 
@@ -19,23 +19,23 @@ void RoundRobin::calWaitingTime(int processor[], int n, int bt[], int wt[], int 
 		bool done = true;
 		for (int i = 0; i < n; i++)
 		{
-			if (rem_bt[i] > 0)
+			if (rem_busTime[i] > 0)
 			{
 				done = false;
-				if (rem_bt[i] > quantum)
+				if (rem_busTime[i] > quantum)
 				{
 					t += quantum;
-					rem_bt[i] -= quantum;
+					rem_busTime[i] -= quantum;
 				}
 				else
 				{
-					t = t + rem_bt[i];
-					wt[i] = t - bt[i];
-					rem_bt[i] = 0;
+					t = t + rem_busTime[i];
+					waitTime[i] = t - busTime[i];
+					rem_busTime[i] = 0;
 				}
 			}
 		}
-		if (done == true)
+		if (done)
 			break;
 	}
 }
