@@ -14,6 +14,7 @@ private:
     unsigned long mainMemory = 8000000000‬; //Size of mainMemory in bits (1GB)
     static const unsigned char mainMemoryHitRatio = 75;
     static const unsigned char mainMemoryAccessTime = 70; //70 nanoseconds
+    static const unsigned int diskAccessTime = 2000000; //2 ms
     unsigned int averageMemoryAccessTime;
 
 public:

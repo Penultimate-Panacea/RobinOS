@@ -42,6 +42,6 @@ unsigned int MemoryManager::getAverageMemoryAccessTime() const {
 
 void MemoryManager::setAverageMemoryAccessTime() {
     unsigned int amta;
-
+    amta  = levelTwoCacheAccessTime+(1- levelTwoCacheHitRatio)*mainMemoryAccessTime+(1-mainMemoryHitRatio)*diskAccessTime;
     MemoryManager::averageMemoryAccessTime = amta;
 }
