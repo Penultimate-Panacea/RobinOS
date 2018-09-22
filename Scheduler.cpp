@@ -15,7 +15,7 @@ Scheduler::Schedule(int process_num, int need_time, int duration, bool complete)
     set_process_num(process_num);
     set_need_time(need_time);
     set_duration(duration);
-    bool set_complete(complete); 
+    set_complete(complete); 
 };
 //setters
 void Scheduler::set_process_num(int process_num){
