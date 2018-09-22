@@ -5,6 +5,10 @@
 #ifndef ROBINOS_MEMORYMANAGER_HPP
 #define ROBINOS_MEMORYMANAGER_HPP
 
+#include <list>
+#include "CodeObject.hpp"
+
+using namespace std;
 
 class MemoryManager {
 private:
@@ -16,11 +20,11 @@ private:
     static const unsigned char mainMemoryAccessTime = 70; //70 nanoseconds
     static const unsigned int diskAccessTime = 2000000; //2 ms
     unsigned int averageMemoryAccessTime;
+    list<CodeObject> initialList;
 public:
     MemoryManager(unsigned int levelTwoCache, unsigned long mainMemory);
      //MemoryManager(unsigned int levelTwoCache = , unsigned long mainMemory);
 
-public:
     unsigned int getLevelTwoCache() const;
 
     void setLevelTwoCache(unsigned int levelTwoCache);
@@ -44,6 +48,8 @@ public:
     void setAverageMemoryAccessTime();
 
     virtual ~MemoryManager();
+
+    void populateInitialList();
 };
 
 

@@ -2,7 +2,13 @@
 // Created by Rian on 9/14/2018.
 //
 
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <list>
 #include "MemoryManager.hpp"
+
+using namespace std;
 
 unsigned int MemoryManager::getLevelTwoCache() const {
     return levelTwoCache;
@@ -61,3 +67,21 @@ levelTwoCache(levelTwoCache), mainMemory(mainMemory) {
 }
 */
 MemoryManager::~MemoryManager() {}
+
+void MemoryManager::populateInitialList(){
+    if (initialList.empty() == false){
+        return;
+    }
+    unsigned long numberOfObjects;
+    cout << "Initial Code Object list is empty. Please enter the number of code objects you wish to test.";
+    cin >> numberOfObjects;
+    for (int i = 0; i < numberOfObjects; ++i) {
+        unsigned int numberOfMemoryOperations;
+        srand(static_cast<unsigned int>(clock()));
+        numberOfMemoryOperations = static_cast<unsigned int>(abs(random()));
+        unsigned int numberOfProcessorOperations;
+        numberOfProcessorOperations = static_cast<unsigned int>(abs(random()));
+        CodeObject newCodeObject = CodeObject(numberOfMemoryOperations, numberOfProcessorOperations);
+        initialList.push_back(newCodeObject);
+    }
+}
