@@ -10,13 +10,40 @@
 #include <string>
 #include "Scheduler.h"
 using namespace std;
-
-Scheduler::Schedule(){
-    int process_num; // number in the process
-    int need_time; // the time it needs to arrive to the queue
-    int duration; // how long it takes to complete
-    bool complete; // is the program complete
+//constructor
+Scheduler::Schedule(int process_num, int need_time, int duration, bool complete){
+    set_process_num(process_num);
+    set_need_time(need_time);
+    set_duration(duration);
+    bool set_complete(complete); 
 };
+//setters
+void Scheduler::set_process_num(int process_num){
+    process_num = process_num;
+}
+void Scheduler::set_need_time(int need_time){
+    need_time = need_time;
+}
+void Scheduler::set_duration(int duration){
+    duration = duration;
+}
+
+void Scheduler::set_complete(bool complete){
+    complete = complete;
+}
+//getters
+int Scheduler::get_process_num(){
+    return process_num;
+}
+int Scheduler::get_need_time(){
+    return need_time;
+}
+int Scheduler::get_duration(){
+    return duration;
+}
+int Scheduler::get_complete(){
+    return complete;
+}
 
 void Scheduler::initialize(Schedule* sched){ // initializes the array
     for (int i = 0; i < 11; i++)
