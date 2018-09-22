@@ -34,6 +34,8 @@ public:
 
     static const unsigned char getMainMemoryAccessTime();
 
+    static const unsigned int getDiskAccessTime();
+
     unsigned int getAverageMemoryAccessTime() const;
 
     void setAverageMemoryAccessTime();

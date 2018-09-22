@@ -40,6 +40,11 @@ unsigned int MemoryManager::getAverageMemoryAccessTime() const {
     return averageMemoryAccessTime;
 }
 
+const unsigned int MemoryManager::getDiskAccessTime(){
+    return diskAccessTime;
+}
+
+
 void MemoryManager::setAverageMemoryAccessTime() {
     unsigned int amta;
     amta  = levelTwoCacheAccessTime+(1- levelTwoCacheHitRatio)*mainMemoryAccessTime+(1-mainMemoryHitRatio)*diskAccessTime;
