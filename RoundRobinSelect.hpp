@@ -12,8 +12,8 @@ using namespace std;
 class RoundRobin{
 public:
 	RoundRobin();
-	void calWaitingTime(int processor[], int n, int bt[], int wt[], int quantum);
-	void calTurnAroundTime();
+	void findWaitingTime();
+	void findTurnAroundTime();
 private:
 	int processes[20];
 	int burst_time[20];

@@ -1,3 +1,4 @@
+#include "RoundRobinSelect.hpp"
 #include <iostream>
 
 using namespace std;
@@ -26,12 +27,10 @@ void findWaitingTime(int processes[], int n, int burstTime[], int waitTime[], in
 			break;
 		}
 	}
-	return waitTime;
 }
 
 void findTurnAroundTime(int processes[], int n, int burstTime[], int waitTime[], int turnAroundTime[]) {
 	for (int i = 0; i < n; i++) {
 		turnAroundTime[i] = burstTime[i] + waitTime[i];
 	}
-	return turnAroundTime;
 }
