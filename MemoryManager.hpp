@@ -11,6 +11,9 @@
 using namespace std;
 
 class MemoryManager {
+    /*!
+     * Handles the interactions with memory as well as holds all programs that may be run.
+     */
 private:
     unsigned int levelTwoCache = 192000; //Size of Level Two cache in bits (24KB)
     static const unsigned char levelTwoCacheHitRatio = 80; //80 out of 100 times the word will be present in L2 cache.
