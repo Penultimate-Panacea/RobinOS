@@ -50,3 +50,14 @@ void MemoryManager::setAverageMemoryAccessTime() {
     amta  = levelTwoCacheAccessTime+(1- levelTwoCacheHitRatio)*mainMemoryAccessTime+(1-mainMemoryHitRatio)*diskAccessTime;
     MemoryManager::averageMemoryAccessTime = amta;
 }
+
+MemoryManager::MemoryManager(unsigned int levelTwoCache, unsigned long mainMemory) : levelTwoCache(levelTwoCache),
+                                                                                     mainMemory(mainMemory) {
+    setAverageMemoryAccessTime();
+}
+/*MemoryManager::MemoryManager(unsigned int levelTwoCache=192000, unsigned long mainMemory=8000000000) :
+levelTwoCache(levelTwoCache), mainMemory(mainMemory) {
+    setAverageMemoryAccessTime();
+}
+*/
+MemoryManager::~MemoryManager() {}
