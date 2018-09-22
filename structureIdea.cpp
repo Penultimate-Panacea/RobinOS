@@ -74,6 +74,7 @@ int get_data(struct Schedule* sched) //read in data from test.txt
     }
     else {
         cout << "error:  file not found" << endl;
+        jobs.close();
         return 1;
     }
 }
