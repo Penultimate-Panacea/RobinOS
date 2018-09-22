@@ -8,18 +8,17 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <chrono>
-#include <ctime>
+#include "Scheduler.h"
 using namespace std;
 
-struct Schedule{
+Scheduler::Schedule(){
     int process_num; // number in the process
     int need_time; // the time it needs to arrive to the queue
     int duration; // how long it takes to complete
     bool complete; // is the program complete
 };
 
-void initialize(struct Schedule* sched){ // initializes the array
+void Scheduler::initialize(Schedule* sched){ // initializes the array
     for (int i = 0; i < 11; i++)
         {
         sched[i].process_num = 0;
@@ -29,7 +28,7 @@ void initialize(struct Schedule* sched){ // initializes the array
         }
 }
 
-void parse(struct Schedule* sched, std::string str, int n)
+void Scheduler::parse(sched, std::string str, int n)
 {
     std::string::size_type sz;
     std::string temp[3];
@@ -55,7 +54,7 @@ void parse(struct Schedule* sched, std::string str, int n)
     sched[n].duration = stoi(temp[2], &sz);
 }
 
-int get_data(struct Schedule* sched) //read in data from test.txt
+int Scheduler::get_data(Schedule* sched) //read in data from test.txt
 {
     int n = 0;
     std::string buffer;
@@ -78,7 +77,7 @@ int get_data(struct Schedule* sched) //read in data from test.txt
     jobs.close();
 }
 
-int find_total(struct Schedule* sched) //calculates total duration of all jobs
+int Scheduler::find_total(Schedule sched) //calculates total duration of all jobs
 {
     int total = 0;
 
@@ -87,13 +86,13 @@ int find_total(struct Schedule* sched) //calculates total duration of all jobs
     return total;
 }
 /*
-void robin_scheduling(struct Schedule* sched) //sorts the array into a better working scheduler
+void Scheduler::robin_scheduling(Schedule* sched) //sorts the array into a better working scheduler
 {
 
 
 }
 */
-void round_robin(struct Schedule* sched) //simulates round robin CPU scheduling
+void Scheduler::round_robin(Schedule* sched) //simulates round robin CPU scheduling
 {
     int ms = 10;
     int time = 0;
@@ -119,17 +118,4 @@ void round_robin(struct Schedule* sched) //simulates round robin CPU scheduling
             }
         }
     }
-}
-
-int main()
-{
-    Schedule *sched = new Schedule[11]; //allocate data on heap
-
-    initialize(sched); //initialize variables
-    std::clock_t c_start = std::clock();
-    auto t_start = std::chrono::high_resolution_clock::now();
-    if (get_data(sched)) //open file and read in job data
-        return -1; //returns error if file not opened
-    round_robin(sched); //begin round robin CPU scheduling
-    delete[] sched; //delete allocated data
 }
