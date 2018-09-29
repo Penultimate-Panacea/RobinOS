@@ -7,11 +7,8 @@
 #include <string>
 class Scheduler{
 public:
-    int process_num = 0;
-    int duration = 0;
-    int need_time = 0;
-    bool complete = 0;
-    Scheduler( int process_num, int need_time, int duration, bool complete);
+   Scheduler(int process_num , int duration, int need_time, bool complete);
+    Scheduler();
 
     int get_process_num();
 
@@ -29,15 +26,16 @@ public:
 
     bool get_data(Scheduler* sched);
 
-  //  void initialize(Scheduler &object, int n);
-
     void parse(Scheduler* sched, std::string, int n);
 
-    int find_total(Scheduler* sched);
+    int find_total(Scheduler* scheduler);
 
-    void round_robin(Scheduler *sched);
+    void initializer(Scheduler* sched);
+    
+    void round_robin(Scheduler* sched);
 
 };
 
 
 #endif //ROUNDROBINIDEA_STRUCTUREIDEA_H
+
