@@ -22,9 +22,7 @@ public:
     unsigned int getMemOps() const;
     unsigned int getProcOps() const;
     friend std::ostream &operator<<(std::ostream &os, const CodeObject &object);
-
     CodeObject(unsigned int memOps, unsigned int procOps);
-
     virtual ~CodeObject();
 };
 

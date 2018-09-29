@@ -6,6 +6,10 @@
 #define ROBINOS_PROCESSOR_HPP
 
 #include "Process.hpp"
+#include <deque>
+
+using namespace std;
+
 class Processor {
     /*!
     * Simulates a Processor by importing Processes/Threads and running CodeObjects contained within them
@@ -19,11 +23,14 @@ private:
     static const unsigned char priorLevelOneHitRatio = 90; //90 out of 100 times the word will be located in the L1 Cache
     unsigned char dataBusWidth = 32; //Size of data Bus
     unsigned char addrBusWidth = 32; //Size of address Bus
-    Process activeProcess;
+    //Process activeProcess;
+    CodeObject activeProcess = CodeObject(0, 0);
+
 public:
     //Constructors:
     Processor(unsigned int clockSpeed, unsigned int instructionsPerSecond, unsigned int levelOneCache,
             unsigned char dataBusWidth, unsigned char addrBusWidth);
+    Processor();
 
     //Destructors
     virtual ~Processor();
@@ -52,9 +59,14 @@ public:
 
     const unsigned int getCacheAccessTime() const;
 
-    const Process &getActiveProcess() const;
+    const CodeObject &getActiveProcess() const;
 
-    void setActiveProcess(const Process &activeProcess);
+    void setActiveProcess(const CodeObject &activeProcess);
+
+    //Queues
+    deque<CodeObject> wait;
+    deque<CodeObject> input;
+    deque<CodeObject> output;
 };
 
 
