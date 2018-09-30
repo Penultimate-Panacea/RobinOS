@@ -72,4 +72,28 @@ void Processor::setActiveProcess(const CodeObject &activeProcess) {
     Processor::activeProcess = activeProcess;
 }
 
+const deque<CodeObject> &Processor::getWait() const {
+    return wait;
+}
+
+void Processor::setWait(const deque<CodeObject> &wait) {
+    Processor::wait = wait;
+}
+
+const deque<CodeObject> &Processor::getInput() const {
+    return input;
+}
+
+void Processor::setInput(const deque<CodeObject> &input) {
+    Processor::input = input;
+}
+
+const deque<CodeObject> &Processor::getOutput() const {
+    return output;
+}
+
+void Processor::setOutput(const deque<CodeObject> &output) {
+    Processor::output = output;
+}
+
 Processor::~Processor() = default;

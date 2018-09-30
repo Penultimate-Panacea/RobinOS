@@ -83,3 +83,7 @@ void MemoryManager::populateInitialList(){
         initialList.push_back(newCodeObject);
     }
 }
+
+const list<CodeObject> &MemoryManager::getInitialList() const {
+    return initialList;
+}

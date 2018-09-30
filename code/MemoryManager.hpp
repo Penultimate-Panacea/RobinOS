@@ -57,6 +57,8 @@ public:
     virtual ~MemoryManager();
 
     void populateInitialList();
+
+    const list<CodeObject> &getInitialList() const;
 };
 
 

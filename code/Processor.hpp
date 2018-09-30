@@ -68,6 +68,17 @@ public:
     deque<CodeObject> input;
     deque<CodeObject> output;
 
+    const deque<CodeObject> &getWait() const;
+
+    void setWait(const deque<CodeObject> &wait);
+
+    const deque<CodeObject> &getInput() const;
+
+    void setInput(const deque<CodeObject> &input);
+
+    const deque<CodeObject> &getOutput() const;
+
+    void setOutput(const deque<CodeObject> &output);
 };
 
 

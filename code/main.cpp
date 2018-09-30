@@ -3,6 +3,7 @@
 #include "Processor.hpp"
 #include "MemoryManager.hpp"
 #include "Scheduler.h"
+#include "CodeUtilities.hpp"
 
 void loggingStart(){
     freopen("output2.csv", "w", stdout);
@@ -15,6 +16,7 @@ int main() {
     Processor mainProcessor = Processor();
     MemoryManager mainMemoryManager = MemoryManager();
     mainMemoryManager.populateInitialList();
-    Scheduler roundRobin = Scheduler();
+    mainProcessor.setWait(listToDeque(mainMemoryManager.getInitialList()));
+    Scheduler roundRobin = Scheduler(mainProcessor);
     return 0;
 }
