@@ -11,6 +11,7 @@
 #include <chrono>
 #include <iomanip>
 #include <ctime>
+
 #include "Scheduler.h"
 
 using namespace std;
@@ -21,6 +22,14 @@ Scheduler::Scheduler(int process_num, int need_time, int duration, bool complete
     set_duration(duration);
     set_complete(complete);
 };
+
+Scheduler::Scheduler(){
+    set_process_num(0);
+    set_need_time(0);
+    set_duration(0);
+    set_complete(0);
+};
+
 //setters
 void Scheduler::set_process_num(int process_num){
     process_num = process_num;
@@ -47,20 +56,20 @@ int Scheduler::get_duration(){
     return duration;
 }
 
-/*void Scheduler::initialize(Scheduler &object, int n){ // initializes the array
-    for (int i = 0; i < n; i++)
+void Scheduler::initializer(Scheduler* sched) {
+    for (int i = 0; i < 11; i++)
     {
-        &object[i].process_num = 0;
-        &object[i].need_time = 0;
-        &object[i].duration = 0;
-        &object[i].complete = false;
+        sched[i].process_num = 0;
+        sched[i].need_time = 0;
+        sched[i].duration = 0;
+        sched[i].complete = false;
     }
 }
-*/
+
 void Scheduler::parse(Scheduler* sched, string str, int n)
 {
-    std::string::size_type sz;
-    std::string temp[3];
+    string::size_type sz;
+    string temp[3];
     char charstr[str.length()];
     int par_cnt = 0;
 
@@ -107,20 +116,19 @@ bool Scheduler::get_data(Scheduler* scheduler) //read in data from test.txt
     }
 }
 
-int Scheduler::find_total(Scheduler* sched) //calculates total duration of all jobs
+int Scheduler::find_total(Scheduler* scheduler) //calculates total duration of all jobs
 {
 int total = 0;
-
 for (int i = 0; i < 11; i++)
-total += sched[i].duration;
+total += scheduler[i].duration;
 return total;
 }
 
-void Scheduler::round_robin(Scheduler *sched)//simulates round robin CPU scheduling
+void Scheduler::round_robin(Scheduler* sched)//simulates round robin CPU scheduling
 {
-    clock_t c_start = clock();
+    auto c_start = clock();
     auto t_start = chrono::high_resolution_clock::now();
-    int ms = 10;
+    int ms = 5;
     int time = 0;
     int total = find_total(sched);
     for (time = 0; time < total; time++)
@@ -129,7 +137,7 @@ void Scheduler::round_robin(Scheduler *sched)//simulates round robin CPU schedul
         {
             if (sched[i].need_time <= time && !sched[i].complete) //if job arrived and job not complete
             {
-                cout << "Job " << sched[i].process_num << ", scheduled for 10 ms";
+                cout << "Job " << sched[i].process_num << ", scheduled for 5 ms";
                 if (sched[i].duration <= ms) //if job will complete, set flag to true to indicate job complete
                 {
                     cout << ", completed" << endl;
@@ -151,3 +159,15 @@ void Scheduler::round_robin(Scheduler *sched)//simulates round robin CPU schedul
     << chrono::duration<double, milli>(t_end-t_start).count() << " ms\n" << endl;
 }
 
+
+int main() //driver
+{
+    Scheduler* object= new Scheduler[11]; //allocate data on heap
+    initializer(object); //initialize variables
+    get_data(object);
+
+    if (get_data(object)) //open file and read in job data
+        return -1; //returns error if file not opened
+    round_robin(object); //begin round robin CPU scheduling
+    delete[] sched; //delete allocated data
+}
