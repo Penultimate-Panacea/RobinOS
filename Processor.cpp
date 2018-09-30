@@ -49,16 +49,26 @@ const unsigned int Processor::getCacheAccessTime() const {
     return cacheAccessTime;
 }
 
+Processor::Processor() {
+    this->setAddrBusWidth(64);
+    this->setClockSpeed(25000000);
+    this->setInstructionsPerSecond(12000000);
+    this->setLevelOneCache(64000);
+    this->setAddrBusWidth(64);
+    this->setDataBusWidth(64);
+}
+
 Processor::Processor(unsigned int clockSpeed, unsigned int instructionsPerSecond, unsigned int levelOneCache,
         unsigned char dataBusWidth, unsigned char addrBusWidth)
         : clockSpeed(clockSpeed), instructionsPerSecond(instructionsPerSecond), levelOneCache(levelOneCache),
         dataBusWidth(dataBusWidth), addrBusWidth(addrBusWidth) {}
 
-const Process &Processor::getActiveProcess() const {
+
+const CodeObject &Processor::getActiveProcess() const {
     return activeProcess;
 }
 
-void Processor::setActiveProcess(const Process &activeProcess) {
+void Processor::setActiveProcess(const CodeObject &activeProcess) {
     Processor::activeProcess = activeProcess;
 }
 

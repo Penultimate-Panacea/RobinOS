@@ -4,11 +4,12 @@
 
 #ifndef ROUNDROBINIDEA_SCHEDULER_H
 #define ROUNDROBINIDEA_SCHEDULER_H
+#include <string>
 class Scheduler{
 public:
-    Schedule( int process_num, int need_time, int duration, bool complete);
-
-    Schedule();
+  
+    Scheduler(int process_num , int duration, int need_time, bool complete);
+    Scheduler();
 
     int get_process_num();
 
@@ -22,21 +23,19 @@ public:
 
     void set_duration(int duration);
 
-    void get_complete();
-
     void set_complete(bool complete);
 
-    void initialize(Schedule &object);
+    void initializer(Scheduler* sched);
 
-    void parse(const Schedule , std::string, int);
+    void parse(Scheduler* sched, std::string str, int n);
 
-    int get_data(const Schedule);
+    bool get_data(Scheduler* scheduler);
 
-    int find_total(Schedule);
+    int find_total(Scheduler* sched);
 
-    void round_robin(Schedule &object);
+    void round_robin(Scheduler* sched);
 
 };
 
-
 #endif //ROUNDROBINIDEA_STRUCTUREIDEA_H
+
