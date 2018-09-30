@@ -26,7 +26,11 @@ private:
     list<CodeObject> initialList;
 public:
     MemoryManager(unsigned int levelTwoCache, unsigned long mainMemory);
-     //MemoryManager(unsigned int levelTwoCache = , unsigned long mainMemory);
+
+    MemoryManager(unsigned int levelTwoCache);
+
+    MemoryManager();
+    //MemoryManager(unsigned int levelTwoCache = , unsigned long mainMemory);
 
     unsigned int getLevelTwoCache() const;
 

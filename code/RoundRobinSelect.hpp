@@ -23,8 +23,14 @@ public:
 	RoundRobin(list<Robin>);
 	int next();
 private:
+<<<<<<< Updated upstream
 	iterator<Robin> it;
 	list<Robin> list;
+=======
+	int processes[];
+	int burst_time[];
+	int quantum;
+>>>>>>> Stashed changes
 };
 
 #endif //ROBINOS_ROUNDROBINSELECT_HPP

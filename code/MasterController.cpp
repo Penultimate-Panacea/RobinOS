@@ -14,17 +14,17 @@ unsigned int MasterController::calculateAdvgThroughput(){
 }
 
 void MasterController::setProcess(Process Proc){
-  this.Process = Proc;
+  this->Process = Proc;
 }
 
 void MasterController::setMemory(MemoryManager mem){
-  this.Memory = mem;
+  this->Memory = mem;
 }
 
 MemoryManager MasterController::getMemory(){
-  return this.MemoryManager;
+  return this->MemoryManager;
 }
 
 Process MasterController::getProcess(){
- return this.Process; 
+ return this->Process; 
 }

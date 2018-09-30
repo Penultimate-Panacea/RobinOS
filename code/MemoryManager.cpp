@@ -57,8 +57,8 @@ void MemoryManager::setAverageMemoryAccessTime() {
     MemoryManager::averageMemoryAccessTime = amta;
 }
 
-MemoryManager::MemoryManager(unsigned int levelTwoCache, unsigned long mainMemory) : levelTwoCache(levelTwoCache),
-                                                                                     mainMemory(mainMemory) {
+MemoryManager::MemoryManager(unsigned int levelTwoCache=192000, unsigned long mainMemory=8000000000) :
+levelTwoCache(levelTwoCache), mainMemory(mainMemory) {
     setAverageMemoryAccessTime();
 }
 /*MemoryManager::MemoryManager(unsigned int levelTwoCache=192000, unsigned long mainMemory=8000000000) :
@@ -66,10 +66,12 @@ levelTwoCache(levelTwoCache), mainMemory(mainMemory) {
     setAverageMemoryAccessTime();
 }
 */
-MemoryManager::~MemoryManager() {}
+MemoryManager::~MemoryManager() = default;
+
+MemoryManager::MemoryManager() {}
 
 void MemoryManager::populateInitialList(){
-    if (initialList.empty() == false){
+    if (!initialList.empty()){
         return;
     }
     unsigned long numberOfObjects;
