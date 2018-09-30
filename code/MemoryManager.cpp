@@ -61,11 +61,7 @@ MemoryManager::MemoryManager(unsigned int levelTwoCache=192000, unsigned long ma
 levelTwoCache(levelTwoCache), mainMemory(mainMemory) {
     setAverageMemoryAccessTime();
 }
-/*MemoryManager::MemoryManager(unsigned int levelTwoCache=192000, unsigned long mainMemory=8000000000) :
-levelTwoCache(levelTwoCache), mainMemory(mainMemory) {
-    setAverageMemoryAccessTime();
-}
-*/
+
 MemoryManager::~MemoryManager() = default;
 
 MemoryManager::MemoryManager() {}
@@ -83,7 +79,7 @@ void MemoryManager::populateInitialList(){
         numberOfMemoryOperations = static_cast<unsigned int>(abs(random()));
         unsigned int numberOfProcessorOperations;
         numberOfProcessorOperations = static_cast<unsigned int>(abs(random()));
-        CodeObject newCodeObject = CodeObject(numberOfMemoryOperations, numberOfProcessorOperations);
+        CodeObject newCodeObject = CodeObject(0, numberOfProcessorOperations); //memOps set to 0 as per Assumptions
         initialList.push_back(newCodeObject);
     }
 }
