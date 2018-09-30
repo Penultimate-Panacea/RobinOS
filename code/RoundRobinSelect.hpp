@@ -7,17 +7,24 @@
 #define ROBINOS_ROUNDROBINSELECT_HPP
 
 #include<iostream>
+#include<list>
+#include<iterator>
 using namespace std;
 
+class Robin {
+public:
+	Robin(int);
+	int call();
+private:
+	int i;
+};
 class RoundRobin{
 public:
-	RoundRobin();
-	void calWaitingTime(int processor[], int n, int bt[], int wt[], int quantum);
-	void calTurnAroundTime();
+	RoundRobin(list<Robin>);
+	int next();
 private:
-	int processes[20];
-	int burst_time[20];
-	int quantum;
+	iterator<Robin> it;
+	list<Robin> list;
 };
 
 #endif //ROBINOS_ROUNDROBINSELECT_HPP
