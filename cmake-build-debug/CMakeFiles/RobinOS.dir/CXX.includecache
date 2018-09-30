@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/Rian/CLionProjects/RobinOS/MemoryManager.cpp
+MemoryManager.hpp
+/cygdrive/c/Users/Rian/CLionProjects/RobinOS/MemoryManager.hpp
+
+/cygdrive/c/Users/Rian/CLionProjects/RobinOS/MemoryManager.hpp
+
