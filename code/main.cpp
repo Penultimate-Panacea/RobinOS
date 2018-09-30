@@ -16,7 +16,7 @@ int main() {
     Processor mainProcessor = Processor();
     MemoryManager mainMemoryManager = MemoryManager();
     mainMemoryManager.populateInitialList();
-    mainProcessor.setWait(listToDeque(mainMemoryManager.getInitialList()));
+    mainProcessor.setInput(listToDeque(mainMemoryManager.getInitialList()));
     Scheduler roundRobin = Scheduler(mainProcessor);
     return 0;
 }
