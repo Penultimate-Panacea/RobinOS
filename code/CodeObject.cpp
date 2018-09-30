@@ -3,7 +3,7 @@
 //
 
 #include "CodeObject.hpp"
-
+#include <iostream>
 
 
 void CodeObject::setMemOps(unsigned int memOps) {
@@ -27,6 +27,8 @@ unsigned int CodeObject::getProcOps() const {
     return procOps;
 }
 
-CodeObject::CodeObject(unsigned int memOps, unsigned int procOps) : memOps(memOps), procOps(procOps) {}
+CodeObject::CodeObject(unsigned int memOps, unsigned int procOps) : memOps(memOps), procOps(procOps) {
+    std::cerr << "New Code Object made with " << procOps << " Processor Operations and " << memOps << " Memory Operations";
+}
 
 CodeObject::~CodeObject() = default;
