@@ -8,6 +8,7 @@ void loggingStart(){
     freopen("output2.csv", "w", stdout);
     freopen("audit.log", "w", stderr);
 }
+unsigned long clockCycle = 0;
 
 int main() {
     loggingStart();
@@ -15,6 +16,5 @@ int main() {
     MemoryManager mainMemoryManager = MemoryManager();
     mainMemoryManager.populateInitialList();
     Scheduler roundRobin = Scheduler();
-
     return 0;
 }
