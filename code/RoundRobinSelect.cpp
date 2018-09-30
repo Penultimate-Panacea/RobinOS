@@ -13,7 +13,7 @@ int Robin::call() {
 
 RoundRobin::RoundRobin(list<Robin> list) {
 	this.list = list;
-	pointer = list.iterator();
+	it = list.iterator();
 }
 
 int RoundRobin::next() {
