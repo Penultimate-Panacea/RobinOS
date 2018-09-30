@@ -115,3 +115,12 @@ cmake-build-release/CMakeFiles/TargetDirectories.txt
 cmake-build-release/Makefile
 cmake-build-release/RobinOS.cbp
 cmake-build-release/RobinOS_unv_.cbp
+*.cbp
+*.includecache
+*.internal
+*.make
+*.cxx
+*.cmake
+*.bin
+*.marks
+*.check_cache
