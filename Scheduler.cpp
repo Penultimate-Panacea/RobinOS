@@ -169,5 +169,5 @@ int main() //driver
     if (get_data(object)) //open file and read in job data
         return -1; //returns error if file not opened
     round_robin(object); //begin round robin CPU scheduling
-    delete[] sched; //delete allocated data
+    delete[] object; //delete allocated data
 }
