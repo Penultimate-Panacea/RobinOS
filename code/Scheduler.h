@@ -7,8 +7,17 @@
 #include <string>
 class Scheduler{
 public:
-  
+
+    int process_num;
+
+    int duration;
+
+    int need_time;
+
+    bool complete;
+
     Scheduler(int process_num , int duration, int need_time, bool complete);
+
     Scheduler();
 
     int get_process_num();
@@ -38,4 +47,3 @@ public:
 };
 
 #endif //ROUNDROBINIDEA_STRUCTUREIDEA_H
-
