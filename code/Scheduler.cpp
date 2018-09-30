@@ -5,6 +5,13 @@
  * Basic Round Robin
  */
 
+/*
+ * Alyssa Hove
+ * 9/19/18
+ * CS 320 Operating Systems
+ * Basic Round Robin
+ */
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -12,7 +19,7 @@
 #include <iomanip>
 #include <ctime>
 
-#include "Scheduler.h"
+#include "Scheduler.hpp"
 
 using namespace std;
 
@@ -24,25 +31,23 @@ Scheduler::Scheduler(int process_num, int need_time, int duration, bool complete
 };
 
 Scheduler::Scheduler(){
-    set_process_num(0);
-    set_need_time(0);
-    set_duration(0);
-    set_complete(0);
-};
+}
+
+
 
 //setters
 void Scheduler::set_process_num(int process_num){
-    process_num = process_num;
+    this->process_num = process_num;
 }
 void Scheduler::set_need_time(int need_time){
-    need_time = need_time;
+    this->need_time = need_time;
 }
 void Scheduler::set_duration(int duration){
-    duration = duration;
+    this->duration = duration;
 }
 
 void Scheduler::set_complete(bool complete){
-    complete = complete;
+    this->complete = complete;
 }
 
 //getters
@@ -106,8 +111,6 @@ bool Scheduler::get_data(Scheduler* scheduler) //read in data from test.txt
             parse(scheduler, buffer, n);
             n++;
         }
-        test.close();
-        return 0;
     }
     else {
         cout << "error:  file not found" << endl;
@@ -157,17 +160,4 @@ void Scheduler::round_robin(Scheduler* sched)//simulates round robin CPU schedul
     cout << fixed << "CPU time used: "
     << 1000.0 * (c_end-c_start) / CLOCKS_PER_SEC << " ms\n" << "Real time used: "
     << chrono::duration<double, milli>(t_end-t_start).count() << " ms\n" << endl;
-}
-
-
-int main() //driver
-{
-    Scheduler* object= new Scheduler[11]; //allocate data on heap
-    initializer(object); //initialize variables
-    get_data(object);
-
-    if (get_data(object)) //open file and read in job data
-        return -1; //returns error if file not opened
-    round_robin(object); //begin round robin CPU scheduling
-    delete[] object; //delete allocated data
 }
