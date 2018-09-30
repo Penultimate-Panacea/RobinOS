@@ -5,13 +5,6 @@
  * Basic Round Robin
  */
 
-/*
- * Alyssa Hove
- * 9/19/18
- * CS 320 Operating Systems
- * Basic Round Robin
- */
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -19,7 +12,7 @@
 #include <iomanip>
 #include <ctime>
 
-#include "Scheduler.hpp"
+#include "Scheduler.h"
 
 using namespace std;
 
