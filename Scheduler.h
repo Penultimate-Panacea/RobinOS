@@ -37,10 +37,5 @@ public:
 
 };
 
-
-#endif //ROUNDROBINIDEA_STRUCTUREIDEA_H
-
-
-
 #endif //ROUNDROBINIDEA_STRUCTUREIDEA_H
 
