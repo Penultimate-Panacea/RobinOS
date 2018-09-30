@@ -8,7 +8,7 @@ void loggingStart(){
     freopen("output2.csv", "w", stdout);
     freopen("audit.log", "w", stderr);
 }
-unsigned long clockCycle = 0;
+extern unsigned long clockCycle = 0;
 
 int main() {
     loggingStart();

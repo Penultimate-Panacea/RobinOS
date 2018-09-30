@@ -68,8 +68,6 @@ public:
     deque<CodeObject> input;
     deque<CodeObject> output;
 
-    //Run
-
 };
 
 
