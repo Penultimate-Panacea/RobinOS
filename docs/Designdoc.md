@@ -1,4 +1,5 @@
-## How to build and run the RobinOS simulator
+
+# Design Document
 
 by Alyssa Hove, Rian Fiantozzi, and Linh Dang
 
@@ -6,7 +7,7 @@ by Alyssa Hove, Rian Fiantozzi, and Linh Dang
 
 |Revision Number |  Version      | Revision History | Date  |
 | ---------------| ------------- |:-------------:| -----:|
-| 1         | 1.1 Beta | Only Round Robin algorithm | 9/30/18 |
+| 1         | 0.1 Beta | Only Round Robin algorithm | 9/30/18 |
 
 
 ## 1. Introduction
@@ -20,14 +21,33 @@ This project is made to simulate an operating system by allowing multiple algori
 <d2/>
 
 ## 1.2 Methodology
+We used an object oriented methodology, with each part of the operating system being kept separate from the rest. This will allow for future projects to more easily modify the behavior of the operating system and maintain constant auditing logs.  It also allows for the hot switching of different scheduling algorthims and methods of handling processes within the same audit session
+### Round Robin 
+
+```mermaid
+graph LR
+A(Job Queue) --> B{Scheduler}
+B -- Job gets popped to processor --> C[Processor]
+C -- Round Robin Times Out --> B
+C -- Job Completed --> D(Out Queue)
+```
 
 ## 2. System needs
 
-## 2.1 CMake and C++ 
+### 2.1 CMake and C++ 
 <d1>
   <dt> Properties needed to run simulation<dt/>
-  <dd> CMake version: CMake Standard 13 <dd/>
-  <dd> C++ version: C++11 <dd/>
+  <dd> CMake version: 3.11 <dd/>
+  <dd> C++ version: C++14 <dd/>
+<d1/>
+<d1> 
+<dt> Toolchain<dt/>
+<dd>gcc  7.3.0-3<dd/>
+<dd>g++7.3.0-3<dd/>
+<dd>`make` 3.6.2-1<dd/>
 <d1/>
 
-## 3. 
+
+## 3.
+
+
