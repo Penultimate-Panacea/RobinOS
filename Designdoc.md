@@ -26,7 +26,7 @@ This project is made to simulate an operating system by allowing multiple algori
 ## 2.1 CMake and C++ 
 <d1>
   <dt> Properties needed to run simulation<dt/>
-  <dd> CMake version: <dd/>
+  <dd> CMake version: CMake Standard 13 <dd/>
   <dd> C++ version: C++11 <dd/>
 <d1/>
 
