@@ -3,7 +3,7 @@
 #include "Processor.hpp"
 #include "MemoryManager.hpp"
 #include "Scheduler.h"
-#include "CodeUtilities.hpp"
+#include "Utilities.hpp"
 #include "GlobalVariables.hpp"
 #include "RoundRobin.hpp"
 
@@ -17,9 +17,8 @@ int main() {
     Processor mainProcessor = Processor();
     MemoryManager mainMemoryManager = MemoryManager();
     mainMemoryManager.populateInitialList();
-    mainProcessor.setInput(listToDeque(mainMemoryManager.getInitialList()));
-    RoundRobin scheduler = RoundRobin(mainProcessor, 15000);
-    do{scheduler.scheduler();}
-    while (mainMemoryManager.getInitialList().size() != mainProcessor.output.size());
+    mainProcessor.setInput(listToDequeCO(mainMemoryManager.getInitialList()));
+    RoundRobin scheduler = RoundRobin(mainProcessor, 5);
+    do{scheduler.scheduler();}while (mainMemoryManager.getInitialList().size() != mainProcessor.output.size());
     return 0;
 }

@@ -6,11 +6,11 @@
 #include <list>
 #include "CodeObject.hpp"
 
-#ifndef ROBINOS_CODEUTILITIES_HPP
-#define ROBINOS_CODEUTILITIES_HPP
+#ifndef ROBINOS_UTILITIES_HPP
+#define ROBINOS_UTILITIES_HPP
 using namespace std;
 
-deque<CodeObject> listToDeque(list<CodeObject> list1) {
+deque<CodeObject> listToDequeCO(list<CodeObject> list1) {
     deque<CodeObject> deque1;
     for (const CodeObject &codeObject: list1) {
         deque1.push_back(codeObject);
@@ -18,4 +18,4 @@ deque<CodeObject> listToDeque(list<CodeObject> list1) {
     return deque1;
 }
 
-#endif //ROBINOS_CODEUTILITIES_HPP
+#endif //ROBINOS_UTILITIES_HPP
