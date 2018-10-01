@@ -12,15 +12,14 @@ void loggingStart(){
     freopen("audit.log", "w", stderr);
 }
 
-unsigned long clockCycles;
 int main() {
-    clockCycles = 0;
     loggingStart();
     Processor mainProcessor = Processor();
     MemoryManager mainMemoryManager = MemoryManager();
     mainMemoryManager.populateInitialList();
     mainProcessor.setInput(listToDeque(mainMemoryManager.getInitialList()));
-    RoundRobin scheduler = RoundRobin(mainProcessor, 75);
-    scheduler.scheduler();
+    RoundRobin scheduler = RoundRobin(mainProcessor, 15000);
+    do{scheduler.scheduler();}
+    while (!mainProcessor.input.empty() && !mainProcessor.wait.empty());
     return 0;
 }

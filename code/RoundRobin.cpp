@@ -31,13 +31,28 @@ void RoundRobin::setAllowedTime(unsigned int allowedTime) {
 }
 
 void RoundRobin::scheduler() {
-    std::cerr << "Process moved from input" << std::endl;
-    activeProcessor.setActiveProcess(activeProcessor.input.front());
-    activeProcessor.input.pop_front();
-    do{
-        std::cerr << "Process running" << std::endl;
-        activeProcessor.runProcess();
-    } while (GlobalVariables::clockCycles % allowedTime != 0);
-    std::cerr << "Process moved to wait" << std::endl;
-    activeProcessor.wait.emplace_back(activeProcessor.getActiveProcess());
+    if (!activeProcessor.input.empty()) {
+        std::cerr << "Process moved from input" << std::endl;
+        activeProcessor.setActiveProcess(activeProcessor.input.front());
+        activeProcessor.input.pop_front();
+        do {
+            std::cerr << "Process running" << std::endl;
+            activeProcessor.runProcess();
+        } while (GlobalVariables::clockCycles % allowedTime != 0);
+        std::cerr << "Process moved to wait" << std::endl;
+        activeProcessor.wait.emplace_back(activeProcessor.getActiveProcess());
+        return;
+    }
+    if(!activeProcessor.wait.empty()){
+        std::cerr << "Process moved from wait" << std::endl;
+        activeProcessor.setActiveProcess(activeProcessor.wait.front());
+        activeProcessor.input.pop_front();
+        do {
+            std::cerr << "Process running" << std::endl;
+            activeProcessor.runProcess();
+        } while (GlobalVariables::clockCycles % allowedTime != 0);
+        std::cerr << "Process moved to wait" << std::endl;
+        activeProcessor.wait.emplace_back(activeProcessor.getActiveProcess());
+        return;
+    }
 }
