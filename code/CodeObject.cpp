@@ -28,7 +28,8 @@ unsigned int CodeObject::getProcOps() const {
 }
 
 CodeObject::CodeObject(unsigned int memOps, unsigned int procOps) : memOps(memOps), procOps(procOps) {
-    std::cerr << "New Code Object made with " << procOps << " Processor Operations and " << memOps << " Memory Operations";
+    std::cerr << "New Code Object made with " << procOps << " Processor Operations and " << memOps
+    << " Memory Operations" << std::endl;
 }
 
 CodeObject::~CodeObject() = default;
