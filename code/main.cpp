@@ -4,13 +4,16 @@
 #include "MemoryManager.hpp"
 #include "Scheduler.h"
 #include "CodeUtilities.hpp"
+#include "GlobalVariables.hpp"
+
 
 void loggingStart(){
     freopen("audit.log", "w", stderr);
 }
-unsigned long clockCycle = 0;
 
+unsigned long clockCycles;
 int main() {
+    clockCycles = 0;
     loggingStart();
     Processor mainProcessor = Processor();
     MemoryManager mainMemoryManager = MemoryManager();

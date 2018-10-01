@@ -11,6 +11,7 @@
 
 
 #include "Processor.hpp"
+#include "GlobalVariables.hpp"
 
 class RoundRobin {
 private:

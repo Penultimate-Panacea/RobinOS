@@ -5,10 +5,13 @@
 #ifndef ROBINOS_PROCESSOR_HPP
 #define ROBINOS_PROCESSOR_HPP
 
+#include "GlobalVariables.hpp"
 #include "Process.hpp"
 #include <deque>
 
 using namespace std;
+
+
 
 class Processor {
     /*!
@@ -24,7 +27,7 @@ private:
     unsigned char dataBusWidth = 32; //Size of data Bus
     unsigned char addrBusWidth = 32; //Size of address Bus
     //Process activeProcess;
-    CodeObject activeProcess = CodeObject(0, 0);
+    CodeObject activeProcess = CodeObject(0, 0); //temporarily only a code object
 
 public:
     //Constructors:
@@ -79,6 +82,8 @@ public:
     const deque<CodeObject> &getOutput() const;
 
     void setOutput(const deque<CodeObject> &output);
+
+    void runProcess();
 };
 
 

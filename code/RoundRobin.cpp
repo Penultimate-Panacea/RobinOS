@@ -3,8 +3,9 @@
 //
 
 #include "RoundRobin.hpp"
+#include "GlobalVariables.hpp"
 
-
+unsigned long clockCycles;
 RoundRobin::RoundRobin(const Processor &activeProcessor, unsigned int allowedTime) : activeProcessor(activeProcessor),
                                                                                      allowedTime(allowedTime) {}
 
@@ -28,4 +29,11 @@ void RoundRobin::setAllowedTime(unsigned int allowedTime) {
     RoundRobin::allowedTime = allowedTime;
 }
 
-void RoundRobin::scheduler() {}
+void RoundRobin::scheduler() {
+    activeProcessor.setActiveProcess(activeProcessor.input.front());
+    activeProcessor.input.pop_front();
+    do{
+        activeProcessor.runProcess();
+    } while (clockCycles % allowedTime != 0);
+    activeProcessor.wait.emplace_back(activeProcessor.getActiveProcess());
+}

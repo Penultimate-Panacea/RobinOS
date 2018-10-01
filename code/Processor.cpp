@@ -3,7 +3,10 @@
 //
 
 #include <iostream>
+#include "GlobalVariables.hpp"
 #include "Processor.hpp"
+
+unsigned long clockCycles;
 
 unsigned int Processor::getClockSpeed() const {
     return clockSpeed;
@@ -99,3 +102,12 @@ void Processor::setOutput(const deque<CodeObject> &output) {
 }
 
 Processor::~Processor() = default;
+
+void Processor::runProcess(){ clockCycles++;
+    if(activeProcess.getProcOps() == 0){
+        output.emplace_back(activeProcess);
+        std::cerr << "Process Completed" << std::endl;
+        return;
+    }
+    activeProcess.setProcOps(activeProcess.getProcOps() - 1);
+}
