@@ -15,7 +15,7 @@ class CodeObject {
 private:
     unsigned int memOps; //Amount of memory needing transfered in bits
     unsigned int procOps; //Amount of CPU operations needed in instructions
-
+    unsigned long processId;
 public:
     void setMemOps(unsigned int memOps);
     void setProcOps(unsigned int procOps);
@@ -24,6 +24,8 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const CodeObject &object);
     CodeObject(unsigned int memOps, unsigned int procOps);
     virtual ~CodeObject();
+
+    unsigned long getProcessId() const;
 };
 
 

@@ -3,6 +3,7 @@
 //
 
 #include "CodeObject.hpp"
+#include "GlobalVariables.hpp"
 #include <iostream>
 
 
@@ -23,13 +24,19 @@ unsigned int CodeObject::getMemOps() const {
     return memOps;
 }
 
+unsigned long CodeObject::getProcessId() const {
+    return processId;
+}
+
 unsigned int CodeObject::getProcOps() const {
     return procOps;
 }
 
 CodeObject::CodeObject(unsigned int memOps, unsigned int procOps) : memOps(memOps), procOps(procOps) {
-    std::cerr << "New Code Object made with " << procOps << " Processor Operations and " << memOps
+    this->processId = GlobalVariables::processId;
+    std::cerr << "New Code Object" << this->processId <<"made with " << procOps << " Processor Operations and " << memOps
     << " Memory Operations" << std::endl;
+    GlobalVariables::processId++;
 }
 
 CodeObject::~CodeObject() = default;

@@ -5,3 +5,4 @@
 #include "GlobalVariables.hpp"
 
 unsigned long GlobalVariables::clockCycles;
+unsigned long GlobalVariables::processId;

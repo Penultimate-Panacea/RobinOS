@@ -72,7 +72,7 @@ const CodeObject &Processor::getActiveProcess() const {
 }
 
 void Processor::setActiveProcess(const CodeObject &activeProcess) {
-    std::cerr << "ACTIVE PROCESS SWITCH";
+    std::cerr << "ACTIVE PROCESS SWITCH         New Process: " << activeProcess.getProcessId() << std::endl;
     Processor::activeProcess = activeProcess;
 }
 
@@ -106,7 +106,7 @@ void Processor::runProcess(){
     GlobalVariables::clockCycles++;
     if(activeProcess.getProcOps() == 0){
         output.emplace_back(activeProcess);
-        std::cerr << "Process Completed" << std::endl;
+        std::cerr << "Process" << activeProcess.getProcessId() << "Completed" << std::endl;
         return;
     }
     activeProcess.setProcOps(activeProcess.getProcOps() - 1);
