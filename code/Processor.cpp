@@ -2,6 +2,7 @@
 // Created by Rian on 9/13/2018.
 //
 
+#include <iostream>
 #include "Processor.hpp"
 
 unsigned int Processor::getClockSpeed() const {
@@ -69,6 +70,7 @@ const CodeObject &Processor::getActiveProcess() const {
 }
 
 void Processor::setActiveProcess(const CodeObject &activeProcess) {
+    std::cerr << "ACTIVE PROCESS SWITCH";
     Processor::activeProcess = activeProcess;
 }
 
