@@ -8,7 +8,7 @@
 void loggingStart(){
     freopen("audit.log", "w", stderr);
 }
-extern unsigned long clockCycle = 0;
+unsigned long clockCycle = 0;
 
 int main() {
     loggingStart();
