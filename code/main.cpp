@@ -20,6 +20,6 @@ int main() {
     mainProcessor.setInput(listToDeque(mainMemoryManager.getInitialList()));
     RoundRobin scheduler = RoundRobin(mainProcessor, 15000);
     do{scheduler.scheduler();}
-    while (!mainProcessor.input.empty() && !mainProcessor.wait.empty());
+    while (mainMemoryManager.getInitialList().size() != mainProcessor.output.size());
     return 0;
 }
