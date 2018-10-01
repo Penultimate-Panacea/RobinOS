@@ -78,8 +78,8 @@ void MemoryManager::populateInitialList(){
         srand(static_cast<unsigned int>(clock()));
         //numberOfMemoryOperations = static_cast<unsigned int>(abs(random()));
         numberOfMemoryOperations = 0; //memOps set to 0 as per Design Assumptions
-        unsigned int numberOfProcessorOperations;
-        numberOfProcessorOperations = static_cast<unsigned int>(abs(random()));
+        unsigned char numberOfProcessorOperations;
+        numberOfProcessorOperations = static_cast<unsigned char>(abs(random())%255);
         CodeObject newCodeObject = CodeObject(numberOfMemoryOperations, numberOfProcessorOperations);
         initialList.push_back(newCodeObject);
     }
