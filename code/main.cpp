@@ -5,6 +5,7 @@
 #include "Scheduler.h"
 #include "CodeUtilities.hpp"
 #include "GlobalVariables.hpp"
+#include "RoundRobin.hpp"
 
 
 void loggingStart(){
@@ -19,6 +20,7 @@ int main() {
     MemoryManager mainMemoryManager = MemoryManager();
     mainMemoryManager.populateInitialList();
     mainProcessor.setInput(listToDeque(mainMemoryManager.getInitialList()));
-//    Scheduler roundRobin = Scheduler(mainProcessor);
+    RoundRobin scheduler = RoundRobin(mainProcessor, 75);
+    scheduler.scheduler();
     return 0;
 }
