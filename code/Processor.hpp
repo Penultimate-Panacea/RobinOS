@@ -5,7 +5,6 @@
 #ifndef ROBINOS_PROCESSOR_HPP
 #define ROBINOS_PROCESSOR_HPP
 
-#include "GlobalVariables.hpp"
 #include "Process.hpp"
 #include <deque>
 

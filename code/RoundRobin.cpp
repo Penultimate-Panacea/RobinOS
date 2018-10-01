@@ -6,7 +6,7 @@
 #include "RoundRobin.hpp"
 #include "GlobalVariables.hpp"
 
-unsigned long clockCycles;
+
 RoundRobin::RoundRobin(const Processor &activeProcessor, unsigned int allowedTime) : activeProcessor(activeProcessor),
                                                                                      allowedTime(allowedTime) {}
 
@@ -37,7 +37,7 @@ void RoundRobin::scheduler() {
     do{
         std::cerr << "Process running" << std::endl;
         activeProcessor.runProcess();
-    } while (clockCycles % allowedTime != 0);
+    } while (GlobalVariables::clockCycles % allowedTime != 0);
     std::cerr << "Process moved to wait" << std::endl;
     activeProcessor.wait.emplace_back(activeProcessor.getActiveProcess());
 }

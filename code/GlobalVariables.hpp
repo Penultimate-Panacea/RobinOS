@@ -4,7 +4,8 @@
 
 #ifndef ROBINOS_GLOBALVARIABLES_HPP
 #define ROBINOS_GLOBALVARIABLES_HPP
-namespace global{
-extern unsigned long clockCycles;
-}
+class GlobalVariables{
+public:
+    static unsigned long clockCycles;
+};
 #endif //ROBINOS_GLOBALVARIABLES_HPP
