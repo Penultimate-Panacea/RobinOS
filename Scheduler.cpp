@@ -1,11 +1,11 @@
 /*
- * Alyssa Hove, Rian Fiantozzi, Linh Dang
+ * Alyssa Hove, Rian Fantozzi
  * 9/19/18
  * CS 320 Operating Systems
  * Basic Round Robin
  */
 
- /* This simulator showcases a basic round robin scheduling system
+ /*! This simulator showcases a basic round robin scheduling system
   * it uses the text file test.txt to gather the information about the processes
   * only deals with processor time and not I/O time
   * currently only accepts input in the scope of 11 different processes */
@@ -21,6 +21,7 @@ struct Scheduler{ //makes the structure of scheduler
     int process_num;
     int need_time;
     int duration;
+    int completed_in;
     bool complete;
 };
 
@@ -46,7 +47,7 @@ void parse(Scheduler* sched, string str, int n) // parses the string and populat
     {
         if (static_cast<int>(charstr[i]) == 44)
         {
-            ++par_cnt;
+            par_cnt++;
             continue;
         }
         else if (static_cast<int>(charstr[i]) == 32)
@@ -58,6 +59,7 @@ void parse(Scheduler* sched, string str, int n) // parses the string and populat
     sched[n].process_num = stoi(temp[0], &sz);
     sched[n].need_time = stoi(temp[1], &sz);
     sched[n].duration = stoi(temp[2], &sz);
+    sched[n].completed_in = stoi(temp[3], &sz);
 }
 
 
@@ -76,14 +78,16 @@ int get_data(struct Scheduler* sched) //read in data from Test.txt, save and par
             parse(sched, buffer, n);
             n++;
         }
+        jobs.close();
         return 0;
     }
     else
     {
         std::cout << "error:  file not found" << std::endl;
+        jobs.close();
         return 1;
     }
-    jobs.close();
+
 }
 
 
@@ -95,11 +99,8 @@ int find_total(struct Scheduler* scheduler) //calculates total duration of all j
     return total;
 }
 
-void round_robin(struct Scheduler* sched)//simulates round robin CPU scheduling
+void round_robin(struct Scheduler* sched, int ms)//simulates round robin CPU scheduling
 {
-    int ms;
-    cout << " How many milliseconds do you want for each job? " << endl;
-    cin >> ms;
     int time = 0;
     int diff = 0;
     int compCount = 0;
@@ -153,7 +154,9 @@ int main() //driver
 
     if (get_data(object)) //open file and read in job data
         return -1; //returns error if file not opened
-    round_robin(object); //begin round robin CPU scheduling
+    for (int i = 1; i < 84; ++i) {
+        round_robin(object, i); //begin round robin CPU scheduling
+    }
     delete[] object; //delete allocated data
 }
 
