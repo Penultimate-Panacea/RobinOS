@@ -1,6 +1,7 @@
 /*
- * Alyssa Hove, Rian Fantozzi
+ * Alyssa Hove, Rian Fantozzi, Linh Dang, Dylan Lear
  * 9/19/18
+ * Edited to Professor's liking on the 17th of Oct.
  * CS 320 Operating Systems
  * Basic Round Robin
  */
@@ -110,7 +111,7 @@ void round_robin(struct Scheduler* sched, int ms)//simulates round robin CPU sch
     }while (compCount != 11);
     float reponseTime = calcAvgResponseTime(time);
     cout << "Using a quantum of:" << ms << endl << "Full time took: " << time << endl << "Average Response Time: "
-    << reponseTime << endl << endl; // outputs the total time spent
+         << reponseTime << endl << endl; // outputs the total time spent
 
 }
 
