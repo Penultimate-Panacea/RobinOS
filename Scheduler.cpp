@@ -22,6 +22,7 @@ struct Scheduler{ //makes the structure of scheduler
     int need_time;
     int duration;
     int completed_in;
+    int turnaround;
     bool complete;
 };
 
@@ -36,6 +37,7 @@ void initializer(struct Scheduler* sched) { // initializes the Scheduler
         sched[i].process_num = i;
         sched[i].need_time = 0;
         sched[i].duration = 0;
+        sched[i].turnaround =0 ;
         sched[i].completed_in = 0;
         sched[i].complete = false;
     }
