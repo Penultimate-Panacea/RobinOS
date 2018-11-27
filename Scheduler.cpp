@@ -2,6 +2,7 @@
  * Alyssa Hove, Rian Fantozzi, Linh Dang, Dylan Lear
  * 9/19/18
  * Edited to Professor's liking on the 17th of Oct.
+ * Nov 26 Editied to turnaround times
  * CS 320 Operating Systems
  * Basic Round Robin
  */
@@ -22,9 +23,11 @@ struct Scheduler{ //makes the structure of scheduler
     int process_num;
     int need_time;
     int duration;
+    int begin_time;
     int completed_in;
     int turnaround;
     bool complete;
+    bool start;
 };
 
 void loggingStart(){
@@ -38,9 +41,12 @@ void initializer(struct Scheduler* sched) { // initializes the Scheduler
         sched[i].process_num = i;
         sched[i].need_time = 0;
         sched[i].duration = 0;
-        sched[i].turnaround =0 ;
-        sched[i].completed_in = 0;
-        sched[i].complete = false;
+        sched[i].begin_time = 0;
+        sched[i].turnaround = 0;
+        sched[i].completed_in =0;
+        sched[i].complete = 0;
+        sched[i].start = 0;
+
     }
     sched[0].duration = 22;
     sched[1].duration = 13;
@@ -67,20 +73,27 @@ float calcAvgResponseTime(int compCount) {
     average = float(compCount) / float(10.0);
     return average;
 }
+int calcTurnaroundTime(int start, int end) {
+    int result = 0;
+    result = end - start;
+    return result;
+}
 
 void round_robin(struct Scheduler* sched, int ms)//simulates round robin CPU scheduling
 {
     int time = 0;
     int diff = 0;
     int compCount = 0;
-
+    cout << "Using a quantum of " << ms << endl;
     do {
         for (int i = 0; i < 11; i++) {
 
             if (sched[i].need_time <= time && !sched[i].complete) //if job arrived and job not complete
             {
-                cerr << "Process " << sched[i].process_num << ", scheduled for " << ms << " ms." <<" Starting at " << time << " ms. " <<
-                     "Time left on process at start " << sched[i].duration << ".";
+                if (!sched[i].start){ //job will start, set flag to true to indicate start
+                    sched[i].begin_time = time;
+                    sched[i].start = true;
+                }
 
 
                 if (sched[i].duration <= ms) //if job will complete, set flag to true to indicate job complete
@@ -88,16 +101,19 @@ void round_robin(struct Scheduler* sched, int ms)//simulates round robin CPU sch
                     if (sched[i].duration < ms) {
                         diff = sched[i].duration;
                         time = time + diff;
-                        cerr << " Completed at " << time << " ms." << endl;
                         time = time - diff;
                         time = time + ms;
+                        sched[i].completed_in = time;
+                        sched[i].turnaround = sched[i].completed_in - sched[i].begin_time;
                         sched[i].complete = true;
-                        sched[i].completed_in = compCount; //Measure Response Time?
+                        sched[i].completed_in = compCount; //Measure Response Time
                         compCount++;
                     }
                     else{
                         time = time + ms;
-                        cerr << " Completed at " << time << " ms." << endl;
+                        sched[i].completed_in = time;
+                        sched[i].turnaround = calcTurnaroundTime(sched[i].begin_time, sched[i].completed_in);
+                        cerr << "Job "<< i << " Completed at " << time << " ms. Turnaround time is " << sched[i].turnaround << endl;
                         sched[i].complete = true;
                         compCount++;
                     }
@@ -105,15 +121,13 @@ void round_robin(struct Scheduler* sched, int ms)//simulates round robin CPU sch
                 } else //if job not complete, subtract quantum from duration
                 {
                     sched[i].duration = sched[i].duration - ms;
-                    cerr << endl;
                     time = time + ms;
                 }
             }
         }
     }while (compCount != 11);
     float reponseTime = calcAvgResponseTime(time);
-    cout << "Using a quantum of:" << ms << endl << "Full time took: " << time << endl << "Average Response Time: "
-         << reponseTime << endl << endl; // outputs the total time spent
+
 
 }
 
@@ -124,6 +138,7 @@ int main() //driver
     cout << "The total ms that the processes will need is " << 298 << "." << endl; // outputs the time needed for all processes
     for (int i = 1; i < 85; ++i) {
         initializer(object); //initialize variables
+        cout << endl;
         round_robin(object, i); //begin round robin CPU scheduling
     }
     delete[] object; //delete allocated data
