@@ -127,6 +127,7 @@ void round_robin(struct Scheduler* sched, int ms)//simulates round robin CPU sch
         }
     }while (compCount != 11);
     float reponseTime = calcAvgResponseTime(time);
+    cout << "Full time took: " << time << endl; // outputs the total time spent
 
 
 }
