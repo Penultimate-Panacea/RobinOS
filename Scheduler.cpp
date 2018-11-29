@@ -6,7 +6,6 @@
  * CS 320 Operating Systems
  * Basic Round Robin
  */
-
 /*! This simulator showcases a basic round robin scheduling system
  * it uses the csv file test.csv to gather the information about the processes
  * only deals with processor time and not I/O time
@@ -49,7 +48,7 @@ void initializer(struct Scheduler* sched) { // initializes the Scheduler
 
     }
 }
-void Scheduler::parse(Scheduler* sched, string str, int n)
+void parse(Scheduler* sched, string str, int n)
 {
     std::string::size_type sz;
     std::string temp[8];
@@ -73,15 +72,15 @@ void Scheduler::parse(Scheduler* sched, string str, int n)
     sched[n].process_num = stoi(temp[0], &sz);
     sched[n].need_time = stoi(temp[1], &sz);
     sched[n].duration = stoi(temp[2], &sz);
-    sched[i].begin_time = stoi(temp[3], &sz);
-    sched[i].turnaround = stoi(temp[4], &sz);
-    sched[i].completed_in = stoi(temp[5], &sz);
-    sched[i].complete = stoi(temp[6], &sz);
-    sched[i].start = stoi(temp[7], &sz);
+    sched[n].begin_time = stoi(temp[3], &sz);
+    sched[n].turnaround = stoi(temp[4], &sz);
+    sched[n].completed_in = stoi(temp[5], &sz);
+    sched[n].complete = stoi(temp[6], &sz);
+    sched[n].start = stoi(temp[7], &sz);
 }
 
 
-bool Scheduler::get_data(Scheduler* scheduler) //read in data from test.txt
+bool get_data(Scheduler* scheduler) //read in data from test.txt
 {
     int n = 0;
     string buffer;
@@ -176,7 +175,7 @@ void round_robin(struct Scheduler* sched, int ms)//simulates round robin CPU sch
                         sum = sched[i].turnaround + sum;
                         normalizedTurnTime = calcNormalTTime(sched[i].need_time,sched[i].turnaround);
                         cerr << "Job "<< i << " Completed at " << time << " ms. Turnaround time is " << sched[i].turnaround <<
-                        ". Normalized turnaround time is " << normalizedTurnTime << endl;
+                             ". Normalized turnaround time is " << normalizedTurnTime << endl;
                         sched[i].complete = true;
                         compCount++;
                     }
