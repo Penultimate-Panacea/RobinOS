@@ -198,6 +198,10 @@ int main() //driver
 {
     loggingStart();
     Scheduler* object= new Scheduler[11]; //allocate data on heap
+    initializer(object); //initialize variables
+    get_data(object);
+    if (get_data(object)) //open file and read in job data
+        return -1; //returns error if file not opened
     cout << "The total ms that the processes will need is " << 298 << "." << endl; // outputs the time needed for all processes
     for (int i = 1; i < 85; ++i) {
         initializer(object); //initialize variables
