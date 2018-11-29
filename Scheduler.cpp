@@ -48,28 +48,60 @@ void initializer(struct Scheduler* sched) { // initializes the Scheduler
         sched[i].start = 0;
 
     }
-    sched[0].duration = 22;
-    sched[0].need_time = 22;
-    sched[1].duration = 13;
-    sched[1].need_time = 13;
-    sched[2].duration = 47;
-    sched[2].need_time = 47;
-    sched[3].duration = 8;
-    sched[3].need_time = 8;
-    sched[4].duration = 10;
-    sched[4].need_time = 10;
-    sched[5].duration = 16;
-    sched[5].need_time = 16;
-    sched[6].duration = 29;
-    sched[6].need_time = 29;
-    sched[7].duration = 23;
-    sched[7].duration = 23;
-    sched[8].duration = 45;
-    sched[8].need_time = 45;
-    sched[9].duration = 84;
-    sched[9].need_time = 84;
-    sched[10].duration = 1;
-    sched[10].need_time = 1;
+}
+void Scheduler::parse(Scheduler* sched, string str, int n)
+{
+    std::string::size_type sz;
+    std::string temp[8];
+    char charstr[str.length()];
+    int par_cnt = 0;
+
+    str.copy(charstr, str.length()); //copy string into c-style string
+    for (int i = 0; i < str.length(); i++) //parse into three string variables, removing commas and spaces
+    {
+        if (static_cast<int>(charstr[i]) == 44)
+        {
+            ++par_cnt;
+            continue;
+        }
+        else if (static_cast<int>(charstr[i]) == 32)
+            continue;
+        else
+            temp[par_cnt] += charstr[i];
+    }
+    //convert strings to ints and copy to structure variables
+    sched[n].process_num = stoi(temp[0], &sz);
+    sched[n].need_time = stoi(temp[1], &sz);
+    sched[n].duration = stoi(temp[2], &sz);
+    sched[i].begin_time = stoi(temp[3], &sz);
+    sched[i].turnaround = stoi(temp[4], &sz);
+    sched[i].completed_in = stoi(temp[5], &sz);
+    sched[i].complete = stoi(temp[6], &sz);
+    sched[i].start = stoi(temp[7], &sz);
+}
+
+
+bool Scheduler::get_data(Scheduler* scheduler) //read in data from test.txt
+{
+    int n = 0;
+    string buffer;
+    fstream test;
+    test.open("test.txt", fstream::in);
+    if (test.is_open())
+    { while (test)
+        {
+            test >> buffer;
+            parse(scheduler, buffer, n);
+            n++;
+        }
+        test.close();
+        return 0;
+    }
+    else {
+        cout << "error:  file not found" << endl;
+        test.close();
+        return 1;
+    }
 }
 
 int find_total(struct Scheduler* scheduler) //calculates total duration of all jobs
